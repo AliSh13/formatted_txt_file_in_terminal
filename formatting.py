@@ -5,7 +5,8 @@ class FormattedText():
     """Форматирование текстого файла по ширине и """
 
     def len_w_s(self, array):
-        """Возвращает количиство символов вместе с пробелами из списка слов."""
+        """Возвращает количиство символов вместе с предпологаемыми пробелами
+         из списка слов."""
         len_words = sum(list(map(len,array)))
         if len(array) > 1:
             len_space = len(array) - 1
@@ -20,7 +21,7 @@ class FormattedText():
         """ Добавляет пробелы в текст в зависимости от количества слов"""
         if extra_spasec > 0 and extra_spasec < self.len_w_s(list):
             if extra_spasec >= len(list):
-                difference = extra_spasec - len(list) + 1 #
+                difference = extra_spasec - len(list) + 1
                 for i in range(0, difference):
                     list[i] += ' '
                 for i in range(0, extra_spasec - difference):
@@ -28,6 +29,7 @@ class FormattedText():
             else:
                 for i in range(0,extra_spasec):
                     list[i] += ' '
+
         formatted_text = ' '.join(list)
         return formatted_text
 
@@ -44,7 +46,7 @@ class FormattedText():
                 words[0] = '  ' + words[0]
                 formatted_line = []
                 for word in words:
-                    if self.len_w_s(formatted_line) + len(word) < 81:
+                    if self.len_w_s(formatted_line) + len(word) < 80:
                         formatted_line.append(word)
                         if word == words[-1]:
                             formatted_text = ' '.join(formatted_line) + '\n'
@@ -57,11 +59,11 @@ class FormattedText():
                         formatted_line.append(word)
                         if word == words[-1]:
                             formatted_text = ' '.join(formatted_line) + '\n'
-
                             result.append(formatted_text)
+
                         formatted_text = ''
 
-            result.append('\t')
+            result.append('\t') # добавляет пусту строку после каждого абзаца
             return result
 
     def send_message(self, array=[], message=''):
