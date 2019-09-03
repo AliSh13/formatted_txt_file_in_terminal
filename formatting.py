@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+import sys
+
 class FormattedText():
     """Форматирование текстого файла по ширине и """
 
